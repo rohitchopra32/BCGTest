@@ -7,7 +7,7 @@ from customer.enums import Gender, IncomeGroup, Region
 
 
 class Customer(models.Model):
-    name = models.CharField(default="", max_length=128)
+    name = models.CharField(default="", max_length=128, blank=True, null=True)
     gender = models.CharField(choices=Gender.choices, max_length=6, default=Gender.MALE)
     income_group = models.CharField(choices=IncomeGroup.choices, max_length=9, default=IncomeGroup.LOW)
     region = models.CharField(choices=Region.choices, max_length=5, default=Region.EAST)
