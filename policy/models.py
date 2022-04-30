@@ -1,7 +1,7 @@
 from django.db import models
 
-from policy.enums import Fuel, VehicleSegment
 from customer.models import Customer
+from policy.enums import Fuel, VehicleSegment
 
 
 class Policy(models.Model):
@@ -25,5 +25,3 @@ class CustomerPolicies(models.Model):
 
     def __str__(self):
         return f"{self.customer.name} - {self.policy_id}"
-
-

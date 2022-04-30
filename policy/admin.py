@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from policy.models import Policy, CustomerPolicies
+
+admin.site.register(Policy)
+admin.site.register(CustomerPolicies)

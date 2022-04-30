@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,10 +15,17 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(default='', max_length=128)),
-                ('gender', models.CharField(choices=[('Male', 'Male'), ('Female', 'Female')], default='Male', max_length=6)),
-                ('income_group', models.CharField(choices=[('0-$25K', '0-$25K'), ('$25-$70K', '$25-$70K'), ('>$70K', '>$70K')], default='0-$25K', max_length=9)),
-                ('region', models.CharField(choices=[('East', 'East'), ('West', 'West'), ('North', 'North'), ('South', 'South')], default='East', max_length=5)),
-                ('marital_status', models.BooleanField(default=False, help_text='If True means married else Unmarried')),
+                ('gender',
+                 models.CharField(choices=[('Male', 'Male'), ('Female', 'Female')], default='Male', max_length=6)),
+                ('income_group',
+                 models.CharField(choices=[('0-$25K', '0-$25K'), ('$25-$70K', '$25-$70K'), ('>$70K', '>$70K')],
+                                  default='0-$25K', max_length=9)),
+                ('region',
+                 models.CharField(choices=[('East', 'East'), ('West', 'West'), ('North', 'North'), ('South', 'South')],
+                                  default='East', max_length=5)),
+                (
+                    'marital_status',
+                    models.BooleanField(default=False, help_text='If True means married else Unmarried')),
             ],
         ),
     ]

@@ -1,5 +1,8 @@
 from django.db import models
+
 from customer.enums import Gender, IncomeGroup, Region
+
+
 # Create your models here.
 
 
