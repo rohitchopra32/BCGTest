@@ -25,4 +25,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/policy/", include("policy.urls")),
     path("api/customer/", include(customer_router.urls)),
-] + static("/", document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
