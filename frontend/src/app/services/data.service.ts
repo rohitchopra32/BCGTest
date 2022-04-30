@@ -26,7 +26,7 @@ export class DataService {
   }
 
   getCustomerPolicies(id: string) {
-    return this.http.get(this.CUSTOMER_POLICY_API + id);
+    return this.http.get(`${this.CUSTOMER_POLICY_API}${id}/`);
   }
 
   getChartDataByRegion(region: string) {
