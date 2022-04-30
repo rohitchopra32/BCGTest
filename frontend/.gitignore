@@ -1,11 +1,3 @@
-.idea
-.vscode
-node_modules
-*.pyc
-migrations
-data.dump
-
-@@ -0,0 +1,42 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output

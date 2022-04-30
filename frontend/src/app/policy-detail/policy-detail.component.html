@@ -1,0 +1,197 @@
+<div class="box box-default detail-container">
+  <!-- <pre>{{data | json}}</pre> -->
+  <div class="row g-3"
+    *ngIf="data">
+    <div class="col-6 p-4 policy-detail"
+      *ngIf="policy">
+      <div class="h4">
+        Policy Details
+      </div>
+      <hr class="mb-4">
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-6">
+          <label class="col-form-label">Policy number</label>
+        </div>
+        <div class="col-auto">
+          <input type="text"
+            disabled
+            [value]="policy.id"
+            class="form-control small">
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-6">
+          <label class="col-form-label">Date of purchase</label>
+        </div>
+        <div class="col-auto">
+          <input type="text"
+            disabled
+            [value]="data.date_of_purchase"
+            class="form-control small">
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-6">
+          <label class="col-form-label">Vehicle segment</label>
+        </div>
+        <div class="col-auto">
+          <input type="text"
+            [(ngModel)]="policy.vehicle_segment"
+            class="form-control small">
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-6">
+          <label class="col-form-label">Premium</label>
+        </div>
+        <div class="col-auto">
+          <input type="number"
+            [(ngModel)]="policy.premium"
+            class="form-control small">
+        </div>
+      </div>
+
+      <div class="form-check mb-3">
+        <input [(ngModel)]="policy.bodily_injury_liability"
+          class="form-check-input"
+          type="checkbox">
+        <label class="form-check-label">
+          Bodily injury liability
+        </label>
+      </div>
+
+      <div class="form-check mb-3">
+        <input [(ngModel)]="policy.personal_injury_protection"
+          class="form-check-input"
+          type="checkbox">
+        <label class="form-check-label">
+          personal injury protection
+        </label>
+      </div>
+
+      <div class="form-check mb-3">
+        <input [(ngModel)]="policy.property_damage_liability"
+          class="form-check-input"
+          type="checkbox">
+        <label class="form-check-label">
+          property damage liability
+        </label>
+      </div>
+
+      <div class="form-check mb-3">
+        <input [(ngModel)]="policy.collision"
+          class="form-check-input"
+          type="checkbox">
+        <label class="form-check-label">
+          collision
+        </label>
+      </div>
+
+      <div class="form-check mb-3">
+        <input [(ngModel)]="policy.comprehensive"
+          class="form-check-input"
+          type="checkbox">
+        <label class="form-check-label">
+          comprehensive
+        </label>
+      </div>
+
+
+    </div>
+
+    <div class="col-6 p-4"
+      *ngIf="customer">
+      <div class="h4">
+        Customer Details
+      </div>
+      <hr class="mb-4">
+
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-6">
+          <label class="col-form-label">Customer id</label>
+        </div>
+        <div class="col-auto">
+          <input type="text"
+            disabled
+            [value]="customer.id"
+            class="form-control small">
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-6">
+          <label class="col-form-label">Customer Name</label>
+        </div>
+        <div class="col-auto">
+          <input type="text"
+            [(ngModel)]="customer.name"
+            class="form-control small">
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-6">
+          <label class="col-form-label">Income group</label>
+        </div>
+        <div class="col-auto">
+          <input type="text"
+            [(ngModel)]="customer.income_group"
+            class="form-control small">
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-6">
+          <label class="col-form-label">Region</label>
+        </div>
+        <div class="col-auto">
+          <input type="text"
+            [(ngModel)]="customer.region"
+            class="form-control small">
+        </div>
+      </div>
+
+
+      <div class="form-check mb-3">
+        <input [(ngModel)]="customer.marital_status"
+          class="form-check-input"
+          type="checkbox">
+        <label class="form-check-label">
+          marital status
+        </label>
+      </div>
+
+
+    </div>
+
+    <hr class="bottom-line">
+    <div class="d-flex justify-content-end">
+      <button type="button"
+        routerLink="/"
+        class="btn btn-outline-secondary mx-4 px-5">Cancel</button>
+      <button class="btn btn-outline-primary btn-lg px-5"
+        (click)="save()"
+        type="button">Save</button>
+    </div>
+
+
+
+
+  </div>
+
+  <div class="d-flex justify-content-center mt-4 table-overlay-child"
+    *ngIf="loading">
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <div class="spinner-grow"
+        role="status"
+        style="width: 4rem; height: 4rem;">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span class="mt-4">Loading...</span>
+    </div>
+  </div>
+
+</div>

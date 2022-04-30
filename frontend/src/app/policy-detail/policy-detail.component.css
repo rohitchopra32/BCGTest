@@ -1,0 +1,21 @@
+.policy-detail {
+  border-right: 1px solid #dfdfdf;
+}
+
+.bottom-line {
+  height: 0.5px;
+}
+
+.table-overlay-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  min-height: 500px;
+}
+
+.detail-container {
+  position: relative;
+}
