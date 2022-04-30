@@ -22,7 +22,7 @@ from customer.urls import LoadData, router as customer_router
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('load/', LoadData.as_view()),
-    path("api/policy/", include(policy_router.urls)),
+    path("api/policy/", include('policy.urls')),
     path("api/customer/", include(customer_router.urls)),
 ]
 
