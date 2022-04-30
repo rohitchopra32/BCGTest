@@ -85,7 +85,7 @@ class GetPolicyByMonth(APIView):
         try:
             region = request.GET.get("region")
             if region:
-                queryset = self.model.objects.select_related("customer").filter(customer__region=region)
+                queryset = self.model.objects.select_related("customer").filter(customer__region__iexact=region)
             else:
                 queryset = self.model.objects.filter()
 
