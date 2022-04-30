@@ -14,6 +14,9 @@ class Policy(models.Model):
     collision = models.BooleanField(default=False)
     comprehensive = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ("-id",)
+
     def __str__(self):
         return f"{self.pk}"
 

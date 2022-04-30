@@ -38,7 +38,7 @@ class PolicyView(ModelViewSet):
     url => /api/policy/
     Allowed methods: GET, POST, PUT, PATCH, DELETE
     """
-    queryset = list(Policy.objects.all())
+    queryset = Policy.objects.all()
     serializer_class = PolicySerializer
     pagination_class = StandardResultsSetPagination
 
