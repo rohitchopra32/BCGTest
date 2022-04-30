@@ -33,12 +33,23 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 
 class PolicyView(ModelViewSet):
-    queryset = Policy.objects.all()
+    """
+    API is used to perform operation on Policy Model.
+    url => /api/policy/
+    Allowed methods: GET, POST, PUT, PATCH, DELETE
+    """
+    queryset = list(Policy.objects.all())
     serializer_class = PolicySerializer
     pagination_class = StandardResultsSetPagination
 
 
 class CustomerPolicyView(ModelViewSet):
+    """
+    API is used to perform operation on CustomerPolicy Model.
+    url => /api/policy/customer_policies/?region=<region>
+    Allowed methods: GET, POST, PUT, PATCH, DELETE
+    :param: query (Optional) it is used to filter result by customer_id and policy_id
+    """
     queryset = CustomerPolicies.objects.all()
     serializer_class = CustomerPolicySerializer
     pagination_class = StandardResultsSetPagination
@@ -46,18 +57,35 @@ class CustomerPolicyView(ModelViewSet):
     def get_queryset(self):
         query = self.request.GET.get("query")
         if query:
-            return self.queryset.filter(Q(policy_id=query) | Q(customer_id=query))
+            return self.queryset.filter(Q(policy_id=query) | Q(customer_id=query)).select_related("policy", "customer")
         return self.queryset
 
 
 class GetPolicyByMonth(APIView):
+    """
+    API is used to get policies count per month of year
+    url => /api/policy/get_policy_by_month/?region=<region>
+    :param: region (Optional)
+    accepted values = East, West, North, South
+
+    response: [
+    {
+        "label": "1/2018",
+        "value": "1"
+    },
+    {
+        "label": "7/2018",
+        "value": "72"
+    }]
+
+    """
     model = CustomerPolicies
 
     def get(self, request):
         try:
             region = request.GET.get("region")
             if region:
-                queryset = self.model.select_related("customer").filter(customer__region=region)
+                queryset = self.model.objects.select_related("customer").filter(customer__region=region)
             else:
                 queryset = self.model.objects.filter()
 
