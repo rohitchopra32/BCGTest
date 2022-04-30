@@ -16,16 +16,13 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include
 
-# from policy.urls import router as policy_router
 from customer.urls import router as customer_router
-from django.views.generic import TemplateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/policy/", include("policy.urls")),
     path("api/customer/", include(customer_router.urls)),
-    re_path('.*', TemplateView.as_view(template_name='index.html')),
 ] + static("/", document_root=settings.STATIC_ROOT)
