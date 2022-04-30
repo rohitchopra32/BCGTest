@@ -50,19 +50,8 @@ class CustomerPolicyView(ModelViewSet):
     serializer_class = CustomerPolicySerializer
     pagination_class = StandardResultsSetPagination
 
-
-class SearchPolicy(APIView, StandardResultsSetPagination):
-    model = CustomerPolicies
-    serializer = CustomerPolicySerializer
-    pagination_class = StandardResultsSetPagination
-
-    def get(self, request):
-        try:
-            query = request.GET.get("query")
-
-            qs = self.model.objects.filter(Q(policy_id=query) | Q(customer_id=query))
-            qs = self.paginate_queryset(qs, request, view=self)
-            data = self.serializer(qs, many=True).data
-            return self.get_paginated_response(data)
-        except Exception as error:
-            return Response()
+    def get_queryset(self):
+        query = self.request.GET.get("query")
+        if query:
+            return self.queryset.filter(Q(policy_id=query) | Q(customer_id=query))
+        return self.queryset
